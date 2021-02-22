@@ -80,7 +80,7 @@ tls:
 #############################################################################
 ca:
   # Name of this CA
-  name: Org2CA
+  name: Org4CA
   # Key file (is only used to import a private key into BCCSP)
   keyfile:
   # Certificate file (default: ca-cert.pem)
@@ -249,6 +249,7 @@ affiliations:
    org5:
       - department1
 
+
 #############################################################################
 #  Signing section
 #
@@ -307,16 +308,16 @@ signing:
 #     CA certificates though it can still issue end entity certificates.
 ###########################################################################
 csr:
-   cn: ca.org2.example.com
+   cn: ca.org4.example.com
    names:
       - C: UK
         ST: "Hampshire"
         L: "Hursley"
-        O: org2.example.com
+        O: org4.example.com
         OU:
    hosts:
      - localhost
-     - org2.example.com
+     - org4.example.com
    ca:
       expiry: 131400h
       pathlength: 1

@@ -1,16 +1,29 @@
 {
-    "name": "asset-transfer-basic",
-    "version": "1.0.0",
-    "description": "Asset-transfer-basic application implemented in JavaScript",
-    "engines": {
-        "node": ">=12",
-        "npm": ">=5"
-    },
-    "engineStrict": true,
-    "author": "Hyperledger",
-    "license": "Apache-2.0",
-    "dependencies": {
-        "fabric-ca-client": "^2.2.4",
-        "fabric-network": "^2.2.4"
-    }
+  "name": "asset-transfer-basic",
+  "version": "1.0.0",
+  "description": "Asset-transfer-basic application implemented in JavaScript",
+  "engines": {
+    "node": ">=12",
+    "npm": ">=5"
+  },
+  "scripts": {
+    "init:network": "cd ../../test-network && ./network.sh up createChannel -c mychannel -ca",
+    "init:cc": "cd ../../test-network && ./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-javascript/ -ccl javascript",
+    "start": "npm run start:app",
+    "start:app": "node app.js",
+    "start:all": "npm run init:network && npm run init:cc && npm start",
+    "down:network": "cd ../../test-network && ./network.sh down",
+    "down:wallet": "rm -rf ./wallet",
+    "down:nm": "rm -rf ./node_modules",
+    "stop": "rm -rf ./wallet && npm run down:network"
+  },
+  "engineStrict": true,
+  "author": "Hyperledger",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fabric-ca-client": "^2.2.5",
+    "fabric-network": "^2.2.5",
+    "socket.io": "^3.1.1"
+  }
 }
